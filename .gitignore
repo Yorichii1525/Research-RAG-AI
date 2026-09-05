@@ -1,0 +1,20 @@
+# Environment & Secrets
+.env
+*.env
+
+# Dependencies & Build
+node_modules/
+__pycache__/
+*.pyc
+dist/
+build/
+
+# Local data & binaries
+storage/
+node/
+*.zip
+
+# System & IDE
+.vscode/
+.idea/
+.DS_Store

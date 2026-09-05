@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - CHROMA_PERSIST_DIRECTORY=./storage/chroma
+      - UPLOAD_DIRECTORY=./storage/uploads
+    volumes:
+      - ./storage:/app/storage
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
