@@ -5,10 +5,18 @@ from app.api import documents, chat
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]
+)
+
 app.include_router(documents.router)
 app.include_router(chat.router)
 
 @app.get("/")
-def root():
+def read_root():
     return {"message": "Welcome to ResearchAI API"}

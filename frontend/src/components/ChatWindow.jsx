@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import SourceCard from './SourceCard';
 
-const BACKEND_URL = "https://research-rag-ai.onrender.com";
+const BACKEND_URL = "https://research-rag-ai-srv-dadqjtn40ujc73cjh1d0.onrender.com";
 
 export default function ChatWindow() {
   const [messages, setMessages] = useState([]);
@@ -23,7 +23,7 @@ export default function ChatWindow() {
     try {
       const res = await axios.post(`${BACKEND_URL}/api/chat`, {
         question: currentInput
-      });
+      }, { timeout: 120000 });
 
       const botMessage = {
         role: 'assistant',
