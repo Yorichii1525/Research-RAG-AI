@@ -1,12 +1,13 @@
-from langchain_mistralai import ChatMistralAI
+import os
+from langchain_google_genai import ChatGoogleGenerativeAI
 from app.core.config import settings
 
 def get_mistral_llm():
-    key = settings.MISTRAL_API_KEY
-    if not key or key == "your_mistral_api_key_here":
-        raise ValueError("MISTRAL_API_KEY is missing. Please set your key in researchai/backend/.env")
-    return ChatMistralAI(
-        api_key=key,
-        model="open-mistral-7b",
+    key = settings.GEMINI_API_KEY or os.getenv("GEMINI_API_KEY")
+    if not key:
+        raise ValueError("GEMINI_API_KEY is missing.")
+    return ChatGoogleGenerativeAI(
+        google_api_key=key,
+        model="gemini-1.5-flash",
         temperature=0.1
     )
