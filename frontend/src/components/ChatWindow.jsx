@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import SourceCard from './SourceCard';
 
-const BACKEND_URL = "https://research-rag-ai-srv-dadqjtn40ujc73cjh1d0.onrender.com";
+const BACKEND_URL = "https://research-rag-ai.onrender.com";
 
 export default function ChatWindow() {
   const [messages, setMessages] = useState([]);
