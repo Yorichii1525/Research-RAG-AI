@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UploadCloud, CheckCircle, AlertCircle, Loader2, FileText } from 'lucide-react';
 
-const BACKEND_URL = "https://research-rag-ai-srv-dadqjtn40ujc73cjh1d0.onrender.com";
+const BACKEND_URL = "https://research-rag-ai.onrender.com";
 
 export default function FileUpload({ onUploadSuccess }) {
   const [file, setFile] = useState(null);
@@ -40,7 +40,7 @@ export default function FileUpload({ onUploadSuccess }) {
       <h3 className="font-semibold text-sm mb-3 flex items-center gap-2 text-slate-200">
         <FileText className="text-blue-400" size={18} /> Upload Research PDF
       </h3>
-      
+
       <form onSubmit={handleUpload} className="space-y-3">
         <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-700 hover:border-blue-500 bg-slate-950/50 hover:bg-slate-900 rounded-lg p-6 cursor-pointer transition-all">
           <UploadCloud className="text-slate-400 mb-2" size={32} />
