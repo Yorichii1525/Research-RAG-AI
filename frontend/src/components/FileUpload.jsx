@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UploadCloud, CheckCircle, AlertCircle, Loader2, FileText } from 'lucide-react';
 
+const BACKEND_URL = "https://research-rag-ai-srv-dadqjtn40ujc73cjh1d0.onrender.com";
+
 export default function FileUpload({ onUploadSuccess }) {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -18,7 +20,7 @@ export default function FileUpload({ onUploadSuccess }) {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/documents/upload', formData, {
+      const res = await axios.post(`${BACKEND_URL}/api/documents/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setStatus({ type: 'success', text: `Uploaded "${file.name}" (${res.data.data.total_pages} pages, ${res.data.data.total_chunks} chunks)` });

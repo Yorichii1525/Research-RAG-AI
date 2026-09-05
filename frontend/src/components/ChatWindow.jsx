@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import SourceCard from './SourceCard';
 
+const BACKEND_URL = "https://research-rag-ai-srv-dadqjtn40ujc73cjh1d0.onrender.com";
+
 export default function ChatWindow() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -19,7 +21,7 @@ export default function ChatWindow() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/chat', {
+      const res = await axios.post(`${BACKEND_URL}/api/chat`, {
         question: currentInput
       });
 
