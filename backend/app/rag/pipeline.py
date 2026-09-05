@@ -14,7 +14,20 @@ def answer_query(query: str):
     prompt_text = RAG_PROMPT.format(context=context_str, question=query)
     llm = get_mistral_llm()
     response = llm.invoke(prompt_text)
-    answer_text = response.content if hasattr(response, "content") else str(response)
+    
+    content = getattr(response, "content", response)
+    if isinstance(content, list):
+        parts = []
+        for item in content:
+            if isinstance(item, dict) and "text" in item:
+                parts.append(item["text"])
+            elif hasattr(item, "text"):
+                parts.append(item.text)
+            else:
+                parts.append(str(item))
+        answer_text = "".join(parts)
+    else:
+        answer_text = str(content)
     
     sources = []
     for doc in retrieved_docs:
