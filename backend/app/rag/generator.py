@@ -8,6 +8,6 @@ def get_mistral_llm():
         raise ValueError("GEMINI_API_KEY is missing.")
     return ChatGoogleGenerativeAI(
         google_api_key=key,
-        model="gemini-1.5-flash",
+        model="gemini-3.1-flash-lite",
         temperature=0.1
     )
